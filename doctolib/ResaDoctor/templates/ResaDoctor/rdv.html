@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="" method="post">
+    <div>
+        <label for="doctors">Choisissez un médecin:</label>
+
+        <select name="doctors" id="doctors">
+            {% for doc in doctor %}
+            <option value="{{ doc }}">{{ doc }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label for="date">Choisissez le créneaux horaire</label>
+        <input type="date" id="date" name="date"
+               value="2021-11-30"
+               min="2021-11-30" max="2025-11-30">
+    </div>
+    <div>
+        <label for="timeslot">Choisissez un créneau horaire:</label>
+
+        <select name="timeslot" id="timeslot">
+            <option value="08h-09h">08h-09h</option>
+            <option value="09h-10h">09h-10h</option>
+            <option value="10h-11h">10h-11h</option>
+            <option value="11h-12h">11h-12h</option>
+            <option value="14h-15h">14h-15h</option>
+            <option value="15h-16h">15h-16h</option>
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Valider">
+    </div>
+</form>
+</body>
+</html>
