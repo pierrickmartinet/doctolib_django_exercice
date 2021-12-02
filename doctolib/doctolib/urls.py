@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+websocket = path
 urlpatterns = [
-    path('resadoctor/', include('ResaDoctor.urls')),
-    path('admin/', admin.site.urls),
+    websocket('resadoctor/', include('ResaDoctor.urls')),
+    websocket('admin/', admin.site.urls),
 ]

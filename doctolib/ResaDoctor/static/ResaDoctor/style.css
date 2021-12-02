@@ -1,0 +1,45 @@
+body {
+    text-align:center;
+      background: white url("https://www.insight-signals.com/wp-content/uploads/2020/09/find-a-doctor-abroad-1920x1080-1.jpg") repeat;
+}
+
+.response {
+    margin-top: 10rem;
+    font-size:1.5rem;
+}
+
+.doc {
+    width: 40%;
+}
+
+.listAppointments {
+    background-color:white;
+    opacity:0.7;
+    margin:100px 300px;
+    list-style-type:none;
+    font-size:1.7rem;
+    border-radius:10%;
+}
+
+.listAppointments li {
+    padding:10px 0;
+}
+
+.bonsoir {
+    width:10%
+}
+
+#doctorName {
+    font-size: 3rem;
+}
+
+#identification {
+    font-size:2rem;
+    height:77%;
+    display:flex;
+    flex-direction: column;
+    flex-wrap:nowrap;
+    justify-content:flex-end;
+    align-items:center;
+    align-content:normal;
+}

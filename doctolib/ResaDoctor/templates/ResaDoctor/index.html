@@ -1,14 +1,22 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'ResaDoctor/style.css' %}">
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Inscription Patient</title>
 </head>
 <body>
-<form action="" method="post">
+<form class="response" action="" method="post">
     {% csrf_token %}
     {{ form }}
     <input type="submit">
 </form>
+    <div id="identification">
+    <p>Vous êtes médecin? Identifiez-vous</p>
+        <a class="doc" href="doctorLogin"><img class="doc"
+                                               src="https://www.coth.fr/wp-content/uploads/2018/05/doctor_homme_coth.png"/></a>
+    </div>
 </body>
 </html>

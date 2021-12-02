@@ -1,0 +1,32 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'ResaDoctor/style.css' %}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Docteur</title>
+</head>
+<body>
+<div id="general">
+    <p>Bonsoir Docteur...</p>
+    <div id="doctorName">
+        {{ loggedDoctor }}
+    </div>
+    <form class="response" action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit">
+    </form>
+    <ul class="listAppointments">
+        {% if doctorAppointments %}
+        {% for appointment in doctorAppointments %}
+        <li>
+            {{ appointment }}
+        </li>
+        {% endfor %}
+        {% endif %}
+    </ul>
+</div>
+</body>
+</html>
