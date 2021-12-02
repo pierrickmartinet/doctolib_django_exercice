@@ -1,19 +1,31 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.views import generic
-
-from .models import Doctor
-
-
-class IndexView(generic.ListView):
-    template_name = 'ResaDoctor/index.html'
-    context_object_name = 'doctor'
+from .forms import PatientRegister, AppointmentRegister
+from .models import Doctor, Patient, Appointment
 
 
-class RdvView(generic.ListView):
-    template_name = 'ResaDoctor/rdv.html'
-    context_object_name = 'doctor'
+def get_patientInfo(request):
+    if request.method == 'POST':
+        form = PatientRegister(request.POST)
+        if form.is_valid():
+            patientDB = form.save()
+            print(patientDB.id)
+            return HttpResponseRedirect(f'{patientDB.id}/rdv')
+    else:
+        form = PatientRegister()
+    return render(request, 'ResaDoctor/index.html', {'form': form})
 
-    def get_queryset(self):
-        """Return the last five published questions."""
-        return Doctor.objects.all()
+
+def get_appointmentInfo(request, patient_id):
+    if request.method == 'POST':
+        form = AppointmentRegister(request.POST)
+        if form.is_valid():
+            appointment = Appointment(doctor=Doctor.objects.get(id=request.POST['doctor']),
+                                      patient=Patient.objects.get(id=patient_id), date=request.POST['date'],
+                                      timeslot=request.POST['timeslot'])
+            appointment.save()
+    else:
+        form = AppointmentRegister()
+
+    return render(request, 'ResaDoctor/rdv.html', {'form': form})

@@ -4,6 +4,6 @@ from . import views
 
 app_name = "resadoctor"
 urlpatterns = [
-    path('', views.IndexView.as_view(), name='index'),
-    path('rdv', views.RdvView.as_view(), name='rdv'),
+    path('', views.get_patientInfo, name='index'),
+    path('<int:patient_id>/rdv', views.get_appointmentInfo, name='rdv'),
 ]

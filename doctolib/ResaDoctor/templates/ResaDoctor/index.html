@@ -7,19 +7,8 @@
 <body>
 <form action="" method="post">
     {% csrf_token %}
-    <div>
-        <label for="last_name">Entrez votre nom:</label>
-        <input type="text" id="last_name" name="last_name"
-        >
-    </div>
-    <div>
-        <label for="first_name">Entrez votre prénom:</label>
-        <input type="text" id="first_name" name="first_name"
-        >
-    </div>
-    <div>
-        <input type="submit" value="Valider">
-    </div>
+    {{ form }}
+    <input type="submit">
 </form>
 </body>
 </html>
