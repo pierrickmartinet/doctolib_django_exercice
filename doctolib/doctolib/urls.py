@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from websocketDoctor.urls import websocket
+from users import views
 
-websocket = path
 urlpatterns = [
-    websocket('resadoctor/', include('ResaDoctor.urls')),
-    websocket('admin/', admin.site.urls),
+    path('resadoctor/', include('ResaDoctor.urls')),
+    path('admin/', admin.site.urls),
+    path("", views.IndexView.as_view()),
+    websocket("ws/", views.websocket_view),
 ]
